@@ -1,0 +1,43 @@
+﻿@model Razor.Models.Product
+
+@{
+    ViewBag.Title = "DemoExpiresion";
+}
+
+<table>
+    <thead>
+        <tr><th>Właściwości</th><th>Wartość</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Nazwa</td><td>@Model.Name</td></tr>
+        <tr><td>Cena</td><td>@Model.Price</td></tr>
+        <tr>
+            <td>Ilość w magazynie</td>
+            <td>
+                @switch (ViewBag.ProductCount)
+                {
+                    case 0:
+                        @: brak;
+                        break;
+                    case 1:
+                        <b>Mało (@ViewBag.ProductCount)</b>
+                        break;
+                    default:
+                        @ViewBag.ProductCount
+                        break;
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div data-discout="@ViewBag.ApplyDiscount" data-express="@ViewBag.ExpressShip" data-supplier="@ViewBag.Supplier">
+    Element Posiada atrybuty danych
+</div>
+
+Rabat:
+<input type="checkbox" checked="@ViewBag.ApplyDiscount" />
+Express:
+<input type="checkbox" checked="@ViewBag.ExpressShip" />
+Dostawca:
+<input type="checkbox" checked="@ViewBag.Supplier" />

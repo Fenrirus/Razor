@@ -23,18 +23,31 @@ namespace Razor.Controllers
             return View(myProduct);
         }
 
-        public ActionResult About()
+        public ActionResult NameAndPrice()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(myProduct);
         }
 
-        public ActionResult Contact()
+        public ActionResult DemoExpression()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.ProductCount = 1;
+            ViewBag.ExpressShip = true;
+            ViewBag.ApplyDiscount = false;
+            ViewBag.Supplier = null;
 
-            return View();
+            return View(myProduct);
+        }
+
+        public ActionResult DemoArray()
+        {
+            Product[] array =
+            {
+                new Product {Name = "Kajak", Price=275m},
+                new Product {Name = "Kamizelka", Price = 48.95m},
+                new Product {Name = "Pilka", Price = 19.50m},
+                new Product {Name = "Flaga narożna", Price = 34.95m}
+            };
+            return View(array);
         }
     }
 }
